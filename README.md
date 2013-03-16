@@ -1,4 +1,4 @@
 LittleFeed
 ==========
-* http://littlefeed.uservoice.com/
+* http://littlefeed.uservoice.com
 * TODO: http://littlefeed.com
