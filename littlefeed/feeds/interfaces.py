@@ -30,14 +30,10 @@ class FeedsInterface(object):
         # eventually consistent. If we omitted the ancestor from this query
         # there would be a slight chance that greeting that had just been
         # written would not show up in a query.
-        feeds = db.GqlQuery(
-            """
-            SELECT * FROM Feed
-              WHERE ANCESTOR IS :1 ORDER BY date_added DESC LIMIT 10
-            """,
-            collection_key
-        )
-        return (cls._data(feed) for feed in feeds)
+        feeds = Feed.all()
+        feeds.ancestor(collection_key)
+        feeds.order("-date_added")
+        return (cls._data(feed) for feed in feeds.run(limit=10))
 
     @classmethod
     def create(cls, collection_name, url, follower=None):
