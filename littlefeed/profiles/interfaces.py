@@ -15,3 +15,7 @@ class UserInterface(object):
     @classmethod
     def login_url(cls, redirect_url):
         return users.create_login_url(redirect_url)
+
+    @classmethod
+    def logout_url(cls, redirect_url):
+        return users.create_logout_url(redirect_url)

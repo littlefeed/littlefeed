@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+  </head>
+  <body>
+    {% for feed in feeds %}
+      {% if feed.follower %}
+        <b>{{ feed.follower }}</b> wrote:
+      {% else %}
+        An anonymous person wrote:
+      {% endif %}
+      <blockquote>{{ feed.url|escape }}</blockquote>
+    {% endfor %}
+
+    <form action="/dashboard/feeds" method="post">
+      <div><input type="url" name="feed"></div>
+      <div><input type="submit" value="Search"></div>
+    </form>
+
+    <a href="{{ url }}">{{ url_linktext }}</a>
+
+  </body>
+</html>
